@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Détection de Fraude Bancaire par Machine Learning — Thiziri Abchiche</title>
+  <meta name="description" content="Pipeline ML complet sur 24M+ transactions — LightGBM, AUC 0.99, recall 94%, API FastAPI. Étude de cas par Thiziri Abchiche, Data Analyst.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://thiziriinfo.github.io/projet-fraude.html">
+  <meta property="og:title" content="Détection de Fraude Bancaire par Machine Learning — Étude de cas">
+  <meta property="og:description" content="Pipeline ML complet sur 24M+ transactions — LightGBM, AUC 0.99, recall 94%, API FastAPI. Étude de cas par Thiziri Abchiche, Data Analyst.">
+  <meta property="og:image" content="https://thiziriinfo.github.io/photo.jpeg">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --accent: #6C63FF;
+      --grad: linear-gradient(135deg, #3D4FE0 0%, #6C63FF 50%, #9B7FE8 100%);
+      --bg: #07081a;
+      --bg2: #05060f;
+    }
+    body { font-family: 'Inter', sans-serif; background: var(--bg); color: #fff; }
+    nav {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 16px 64px; background: rgba(7,8,26,0.96);
+      position: fixed; width: 100%; top: 0; z-index: 100;
+      border-bottom: 1px solid rgba(108,99,255,0.12); backdrop-filter: blur(10px);
+    }
+    .nav-logo { font-size: 15px; font-weight: 700; color: #fff; text-decoration: none; }
+    .nav-logo span { background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .nav-back {
+      text-decoration: none; color: rgba(255,255,255,0.4); font-size: 11px;
+      font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; transition: color 0.2s;
+    }
+    .nav-back:hover { color: #fff; }
+    main { max-width: 820px; margin: 0 auto; padding: 140px 32px 80px; }
+    .cs-kicker {
+      font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase;
+      background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      font-weight: 600; margin-bottom: 14px;
+    }
+    h1 { font-family: 'Barlow', sans-serif; font-weight: 800; font-size: 40px; line-height: 1.1; margin-bottom: 18px; }
+    .cs-intro { font-size: 14px; color: rgba(255,255,255,0.55); line-height: 1.9; margin-bottom: 24px; }
+    .cs-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
+    .cs-tag {
+      font-size: 11px; font-weight: 600; padding: 5px 14px; border-radius: 4px;
+      background: rgba(108,99,255,0.1); color: #a89fff; border: 1px solid rgba(108,99,255,0.15);
+    }
+    .cs-actions { display: flex; gap: 12px; margin-bottom: 56px; flex-wrap: wrap; }
+    .btn-dashboard {
+      padding: 10px 22px; background: var(--grad); color: #fff; border-radius: 4px;
+      font-size: 12px; font-weight: 600; text-decoration: none;
+    }
+    .btn-github {
+      padding: 10px 18px; border: 1px solid rgba(255,255,255,0.12); color: rgba(255,255,255,0.5);
+      border-radius: 4px; font-size: 12px; text-decoration: none; transition: border-color 0.2s, color 0.2s;
+    }
+    .btn-github:hover { border-color: rgba(108,99,255,0.4); color: #9B7FE8; }
+    .cs-screenshot {
+      width: 100%; border-radius: 10px; border: 1px solid rgba(108,99,255,0.2);
+      margin-bottom: 56px; display: block;
+    }
+    .section-label { display: flex; align-items: center; gap: 10px; margin: 48px 0 18px; }
+    .section-label::before {
+      content: ''; display: block; width: 3px; height: 15px;
+      background: var(--grad); border-radius: 2px; flex-shrink: 0;
+    }
+    .section-label span {
+      font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase;
+      color: rgba(255,255,255,0.3); font-weight: 600;
+    }
+    p, li { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.9; margin-bottom: 14px; }
+    ul { padding-left: 20px; margin-bottom: 14px; }
+    li { margin-bottom: 6px; }
+    strong { color: #9B7FE8; font-weight: 600; }
+    .cs-stats {
+      display: flex; gap: 32px; align-items: center; flex-wrap: wrap;
+      margin: 28px 0; padding: 24px; border-radius: 10px;
+      background: rgba(108,99,255,0.06); border: 1px solid rgba(108,99,255,0.12);
+    }
+    .cs-stat .num {
+      font-size: 26px; font-weight: 300;
+      background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .cs-stat .label {
+      font-size: 10px; color: rgba(255,255,255,0.35);
+      text-transform: uppercase; letter-spacing: 0.05em; margin-top: 3px;
+    }
+    .cs-quote {
+      border-left: 3px solid; border-image: var(--grad) 1;
+      padding: 4px 0 4px 20px; margin: 28px 0;
+      font-size: 14px; color: rgba(255,255,255,0.65); font-style: italic; line-height: 1.8;
+    }
+    .cs-cta {
+      margin-top: 64px; padding: 36px; border-radius: 12px; text-align: center;
+      background: rgba(108,99,255,0.06); border: 1px solid rgba(108,99,255,0.15);
+    }
+    .cs-cta h3 { font-family: 'Barlow', sans-serif; font-size: 22px; margin-bottom: 8px; }
+    .cs-cta p { margin-bottom: 20px; }
+    footer {
+      padding: 24px 64px; border-top: 1px solid rgba(108,99,255,0.08);
+      text-align: center; font-size: 11px; color: rgba(255,255,255,0.18);
+    }
+    @media (max-width: 640px) {
+      nav { padding: 14px 24px; }
+      h1 { font-size: 30px; }
+      main { padding: 120px 20px 60px; }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a class="nav-logo" href="index.html">TA<span>.</span></a>
+    <a class="nav-back" href="index.html#projects">← Retour aux projets</a>
+  </nav>
+  <main>
+    <div class="cs-kicker">Étude de cas · Banque · Machine Learning</div>
+    <h1>Détection de Fraude Bancaire par Machine Learning</h1>
+    <p class="cs-intro">Détecter 94% des fraudes quand elles représentent moins de 0,2% des transactions : un problème de classification extrême où la métrique choisie compte plus que le modèle.</p>
+    <div class="cs-tags"><span class="cs-tag">Python</span><span class="cs-tag">LightGBM</span><span class="cs-tag">XGBoost</span><span class="cs-tag">scikit-learn</span><span class="cs-tag">FastAPI</span><span class="cs-tag">Streamlit</span></div>
+    <div class="cs-actions">
+      <a href="https://fraud-risk-scoring-system.streamlit.app/" target="_blank" class="btn-dashboard">Voir le dashboard live →</a>
+      <a href="https://github.com/Thiziriinfo/Fraud-Risk-Scoring-System" target="_blank" class="btn-github">Code sur GitHub</a>
+    </div>
+    <!-- Capture d'écran principale : décommente et ajoute l'image au repo
+    <img class="cs-screenshot" src="thumb-fraude.png" alt="Capture du dashboard Détection de Fraude Bancaire">
+    -->
+
+<div class="section-label"><span>Le problème</span></div>
+<p>La fraude bancaire coûte des milliards chaque année, et la détecter en temps réel reste fondamentalement difficile : les fraudes représentent <strong>moins de 0,2% des transactions</strong>, les patterns changent constamment, et le coût d'une erreur est asymétrique — bloquer un client légitime n'a pas le même prix que laisser passer une fraude. Ce projet reproduit le travail d'une équipe data science en banque : des données brutes jusqu'à l'API en production.</p>
+
+<div class="section-label"><span>Les données</span></div>
+<p>Dataset <strong>IBM TabFormer</strong> (24M+ transactions synthétiques réalistes), choisi pour ses variables métier interprétables — montant, type de transaction, marchand, heure, erreurs — contrairement aux datasets Kaggle anonymisés par PCA. Après analyse de plusieurs plages temporelles, j'ai retenu <strong>2015–2019</strong> : 8,5M de transactions, taux de fraude de 0,136%, patterns homogènes, en excluant les biais de la crise 2008-2010 et les données incomplètes de 2020.</p>
+
+<div class="section-label"><span>La démarche</span></div>
+<p>L'EDA a révélé les premiers signaux : les transactions <strong>en ligne fraudent 7x plus</strong> que les transactions par puce (0,56% vs 0,08%), les combinaisons d'erreurs Bad CVV + solde insuffisant montent à 8% de fraude, et le pic se situe entre 10h et 16h. Côté modélisation : échantillonnage stratifié (ratio 1/17 retenu après comparaison), feature engineering (heure, is_online, has_error), puis duel <strong>LightGBM vs XGBoost</strong> — LightGBM l'emporte sur tous les indicateurs. Validation croisée 5 folds, écart-type AUC de 0.0004 : pas d'overfitting. Le modèle est industrialisé en <strong>API REST avec FastAPI</strong>.</p>
+
+<div class="cs-stats"><div class="cs-stat"><div class="num">0.9904</div><div class="label">AUC-ROC</div></div><div class="cs-stat"><div class="num">94%</div><div class="label">recall fraude</div></div><div class="cs-stat"><div class="num">24M+</div><div class="label">transactions</div></div><div class="cs-stat"><div class="num">1/17</div><div class="label">ratio retenu</div></div></div>
+
+<div class="section-label"><span>L'insight qui compte</span></div>
+<div class="cs-quote">Le signal le plus prédictif n'est ni le montant ni l'heure — c'est le type de commerce (MCC). Le profil du marchand prime sur le comportement de l'utilisateur. C'est exactement le genre de découverte qui donne sa valeur à l'EDA avant la modélisation.</div>
+
+<div class="section-label"><span>Limites assumées</span></div>
+<p>Le dataset est synthétique : les patterns sont plus réguliers que sur des données bancaires réelles, où un AUC de 0.85–0.92 constitue un bon score en production. Sur un problème aussi déséquilibré, une accuracy de 99,8% ne veut rien dire — c'est le choix du seuil, du ratio d'échantillonnage et de la métrique (le recall, car en banque on préfère bloquer une transaction légitime que laisser passer une fraude) qui rend un modèle réellement utile.</p>
+
+    <div class="cs-cta">
+      <h3>Un projet similaire en tête ?</h3>
+      <p>Je suis ouverte aux opportunités — CDI ou mission freelance, démarrage immédiat.</p>
+      <a href="mailto:thiziri.abchiche@gmail.com" class="btn-dashboard">Me contacter</a>
+    </div>
+  </main>
+  <footer>© 2026 Thiziri Abchiche — Data Analyst · Île-de-France</footer>
+</body>
+</html>
