@@ -4,10 +4,24 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Thiziri Abchiche — Data Analyst</title>
+
+  <!-- SEO -->
+  <meta name="description" content="Data Analyst — BI & Machine Learning · Île-de-France · +3 ans d'expérience (télécom, énergie). Dashboards live, modèles ML en production. Ouverte aux opportunités CDI ou mission freelance.">
+
+  <!-- Open Graph (aperçu LinkedIn / WhatsApp / Slack) -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://thiziriinfo.github.io/">
+  <meta property="og:title" content="Thiziri Abchiche — Data Analyst · BI & Machine Learning">
+  <meta property="og:description" content="+3 ans d'expérience (télécom, énergie) · Dashboards live et modèles ML en production · Ouverte aux opportunités CDI ou mission freelance.">
+  <meta property="og:image" content="https://thiziriinfo.github.io/photo.jpeg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Thiziri Abchiche — Data Analyst · BI & Machine Learning">
+  <meta name="twitter:description" content="+3 ans d'expérience · Dashboards live et modèles ML en production · CDI ou mission freelance.">
+  <meta name="twitter:image" content="https://thiziriinfo.github.io/photo.jpeg">
+
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@900&family=Barlow:wght@700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-
     :root {
       --accent: #6C63FF;
       --accent2: #3D4FE0;
@@ -16,15 +30,12 @@
       --bg2: #05060f;
       --surface: rgba(255,255,255,0.04);
     }
-
     body {
       font-family: 'Inter', sans-serif;
       background: var(--bg);
       color: #fff;
       overflow-x: hidden;
     }
-
-    /* ── NAV ── */
     nav {
       display: flex;
       justify-content: space-between;
@@ -59,8 +70,6 @@
       transition: background 0.2s, color 0.2s;
     }
     .nav-links .btn-contact:hover { background: var(--accent); color: #fff; border-color: var(--accent); }
-
-    /* ── HERO ── */
     #hero {
       min-height: 100vh;
       display: grid;
@@ -71,8 +80,6 @@
       position: relative;
       overflow: hidden;
     }
-
-    /* fond dégradé discret derrière la photo */
     #hero::before {
       content: '';
       position: absolute;
@@ -81,8 +88,6 @@
       background: linear-gradient(135deg, rgba(61,79,224,0.12) 0%, rgba(108,99,255,0.08) 50%, rgba(155,127,232,0.05) 100%);
       pointer-events: none;
     }
-
-    /* grille de points tech */
     #hero::after {
       content: '';
       position: absolute;
@@ -92,7 +97,6 @@
       pointer-events: none;
       mask-image: radial-gradient(ellipse 80% 80% at 70% 50%, black 30%, transparent 100%);
     }
-
     .hero-text { min-width: 0; position: relative; z-index: 2; }
     .hero-name {
       font-family: 'Barlow Condensed', Impact, sans-serif;
@@ -134,8 +138,6 @@
       color: #9B7FE8;
       letter-spacing: 0.06em;
     }
-
-    /* photo magazine */
     .hero-photo {
       position: relative;
       z-index: 2;
@@ -153,7 +155,6 @@
       position: relative;
       z-index: 2;
     }
-    /* cadre dégradé autour de la photo */
     .hero-photo::before {
       content: '';
       position: absolute;
@@ -172,15 +173,11 @@
       z-index: 0;
       opacity: 0.1;
     }
-
-    /* ── SÉPARATEUR ── */
     .divider {
       height: 1px;
       background: linear-gradient(90deg, transparent, rgba(108,99,255,0.2), transparent);
       margin: 0 64px;
     }
-
-    /* ── SECTION PROFIL + COMPÉTENCES ── */
     #about {
       padding: 96px 64px;
       display: grid;
@@ -188,7 +185,6 @@
       gap: 80px;
       align-items: flex-start;
     }
-
     .section-label {
       display: flex;
       align-items: center;
@@ -210,7 +206,6 @@
       color: rgba(255,255,255,0.3);
       font-weight: 600;
     }
-
     .about-headline {
       font-family: 'Barlow', sans-serif;
       font-weight: 800;
@@ -224,7 +219,6 @@
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
-
     .about-text {
       font-size: 13px;
       color: rgba(255,255,255,0.5);
@@ -232,7 +226,6 @@
       margin-bottom: 20px;
     }
     .about-text strong { color: #9B7FE8; font-weight: 600; }
-
     .about-stats {
       display: flex;
       gap: 32px;
@@ -269,23 +262,6 @@
       gap: 8px;
     }
     .lang-text span { color: rgba(108,99,255,0.5); font-size: 10px; }
-    .lang-badges { display: flex; gap: 6px; align-items: center; }
-    .lang-badge {
-      padding: 4px 10px;
-      border-radius: 3px;
-      font-size: 9px;
-      font-weight: 600;
-      border: 1px solid rgba(255,255,255,0.1);
-      background: rgba(255,255,255,0.05);
-      color: rgba(255,255,255,0.5);
-    }
-    .lang-badge.main {
-      background: rgba(108,99,255,0.15);
-      border-color: rgba(108,99,255,0.35);
-      color: #9B7FE8;
-    }
-
-    /* Skills */
     .skills-col { min-width: 0; }
     .skills-section-title {
       font-size: 10px;
@@ -310,8 +286,6 @@
     .tag-accent { background: linear-gradient(135deg, #3D4FE0, #6C63FF); color: #fff; }
     .tag-white { background: rgba(108,99,255,0.1); color: #c4bfff; border: 1px solid rgba(108,99,255,0.2); }
     .tag-gray { background: rgba(255,255,255,0.04); color: rgba(255,255,255,0.5); border: 1px solid rgba(255,255,255,0.07); }
-
-    /* ── DÉMARCHE ── */
     #demarche { padding: 96px 64px; background: var(--bg2); }
     .demarche-header { margin-bottom: 56px; }
     .demarche-header h2 { font-family: 'Barlow', sans-serif; font-weight: 800; font-size: 32px; color: #fff; }
@@ -322,8 +296,6 @@
     .step-title { font-size: 13px; font-weight: 600; color: #fff; margin-bottom: 10px; }
     .step-desc { font-size: 12px; color: rgba(255,255,255,0.4); line-height: 1.7; }
     .step-desc strong { color: #9B7FE8; font-weight: 500; }
-
-    /* ── PROJETS ── */
     #projects { padding: 96px 64px; }
     .projects-header { margin-bottom: 48px; }
     .projects-header h2 { font-family: 'Barlow', sans-serif; font-weight: 800; font-size: 32px; color: #fff; }
@@ -336,14 +308,22 @@
       transition: border-color 0.2s, transform 0.2s;
     }
     .project-card:hover { border-color: rgba(108,99,255,0.4); transform: translateY(-3px); }
-    .project-thumb { height: 120px; background: rgba(61,79,224,0.08); display: flex; align-items: flex-end; padding: 14px; position: relative; }
+    .project-thumb { height: 120px; background: rgba(61,79,224,0.08); display: flex; align-items: flex-end; padding: 14px; position: relative; overflow: hidden; }
+    .project-thumb img {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: top;
+      opacity: 0.85;
+    }
     .project-badge {
       position: absolute; top: 12px; right: 12px;
       background: var(--grad);
       color: #fff; font-size: 9px; font-weight: 700;
       padding: 3px 10px; border-radius: 3px; letter-spacing: 0.06em;
+      z-index: 2;
     }
-    .project-thumb-label { font-size: 11px; color: rgba(255,255,255,0.3); }
+    .project-thumb-label { font-size: 11px; color: rgba(255,255,255,0.75); position: relative; z-index: 2; text-shadow: 0 1px 6px rgba(0,0,0,0.8); }
     .project-body { padding: 18px; }
     .project-title { font-size: 13px; font-weight: 600; color: #fff; margin-bottom: 8px; }
     .project-desc { font-size: 11px; color: rgba(255,255,255,0.4); line-height: 1.6; margin-bottom: 14px; }
@@ -353,11 +333,10 @@
     .btn-dashboard { padding: 7px 16px; background: var(--grad); color: #fff; border-radius: 4px; font-size: 11px; font-weight: 600; text-decoration: none; }
     .btn-github { padding: 7px 14px; border: 1px solid rgba(255,255,255,0.12); color: rgba(255,255,255,0.5); border-radius: 4px; font-size: 11px; text-decoration: none; transition: border-color 0.2s, color 0.2s; }
     .btn-github:hover { border-color: rgba(108,99,255,0.4); color: #9B7FE8; }
-    .project-card-placeholder { border: 1px dashed rgba(108,99,255,0.15); border-radius: 10px; min-height: 240px; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 10px; }
+    .project-card-placeholder { border: 1px dashed rgba(108,99,255,0.15); border-radius: 10px; min-height: 240px; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 10px; padding: 24px; text-align: center; }
     .project-card-placeholder .plus { width: 32px; height: 32px; border: 1.5px dashed rgba(108,99,255,0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; color: rgba(108,99,255,0.3); }
-    .project-card-placeholder p { font-size: 11px; color: rgba(255,255,255,0.18); }
-
-    /* ── CONTACT ── */
+    .project-card-placeholder .ph-title { font-size: 12px; font-weight: 600; color: rgba(255,255,255,0.45); }
+    .project-card-placeholder p { font-size: 11px; color: rgba(255,255,255,0.18); line-height: 1.6; }
     #contact { padding: 96px 64px; background: var(--bg2); text-align: center; }
     .contact-label { margin-bottom: 16px; justify-content: center; }
     #contact h2 { font-family: 'Barlow', sans-serif; font-weight: 800; font-size: 36px; color: #fff; margin-bottom: 12px; }
@@ -366,13 +345,10 @@
     .btn-email { padding: 12px 28px; background: var(--grad); color: #fff; border-radius: 4px; font-size: 12px; font-weight: 600; text-decoration: none; }
     .btn-social { padding: 12px 22px; border: 1px solid rgba(108,99,255,0.25); color: rgba(255,255,255,0.6); border-radius: 4px; font-size: 12px; text-decoration: none; transition: border-color 0.2s, color 0.2s; }
     .btn-social:hover { border-color: rgba(108,99,255,0.5); color: #9B7FE8; }
-
-    /* ── FOOTER ── */
     footer { padding: 24px 64px; border-top: 1px solid rgba(108,99,255,0.08); text-align: center; font-size: 11px; color: rgba(255,255,255,0.18); }
   </style>
 </head>
 <body>
-
   <nav>
     <div class="nav-logo">TA<span>.</span></div>
     <ul class="nav-links">
@@ -391,7 +367,7 @@
       </div>
       <p class="hero-title">Data Analyst</p>
       <p class="hero-location">Île-de-France &nbsp;·&nbsp; Mobile toute la France</p>
-      <span class="hero-badge">Ouverte aux opportunités · CDI</span>
+      <span class="hero-badge">Ouverte aux opportunités · CDI ou mission freelance</span>
     </div>
     <div class="hero-photo">
       <img src="photo.jpeg" alt="Thiziri Abchiche">
@@ -408,12 +384,14 @@
         Data Analyst <strong>orientée impact</strong>, je pilote des projets <strong>end-to-end</strong> : collecte, nettoyage, <strong>modélisation</strong>, et restitution sous forme de <strong>dashboards interactifs</strong> et <strong>reportings automatisés</strong> en production. Capable de traduire des analyses complexes en <strong>recommandations actionnables</strong> pour les équipes métier et les <strong>décideurs</strong>.
       </p>
       <p class="about-text">
-        Expérimentée sur des bases de données à <strong>+15 millions d'entrées</strong> — <strong>SQL</strong> et <strong>Python</strong> en environnement professionnel réel — avec une maîtrise du <strong>pipeline de données</strong> complet : <strong>ETL</strong>, <strong>EDA</strong>, <strong>feature engineering</strong>, modèles <strong>prédictifs</strong> (scoring, classification) atteignant <strong>80% de précision</strong>. Habituée à travailler en <strong>autonomie</strong> comme en équipe <strong>Agile</strong>, avec un souci constant de la <strong>data quality</strong>.
+        Expérimentée sur des bases de données à <strong>+15 millions d'entrées</strong> — <strong>SQL</strong> et <strong>Python</strong> en environnement professionnel réel — avec une maîtrise du <strong>pipeline de données</strong> complet : <strong>ETL</strong>, <strong>EDA</strong>, <strong>feature engineering</strong>, modèles <strong>prédictifs</strong> (scoring, détection d'anomalies, forecasting) <strong>mis en production</strong>. Habituée à travailler en <strong>autonomie</strong> comme en équipe <strong>Agile</strong>, avec un souci constant de la <strong>data quality</strong>.
       </p>
       <div class="about-stats">
         <div class="stat-item"><div class="num">3 ans+</div><div class="label">d'expérience</div></div>
         <div class="stat-divider"></div>
-        <div class="stat-item"><div class="num">+15M</div><div class="label">lignes · 82% recall</div></div>
+        <div class="stat-item"><div class="num">+15M</div><div class="label">lignes traitées en production</div></div>
+        <div class="stat-divider"></div>
+        <div class="stat-item"><div class="num">3</div><div class="label">dashboards live</div></div>
         <div class="stat-divider"></div>
         <div class="lang-text">Français <span>·</span> Anglais</div>
       </div>
@@ -500,6 +478,7 @@
     <div class="projects-grid">
       <div class="project-card">
         <div class="project-thumb">
+          <!-- Ajoute une capture : <img src="thumb-immobilier.png" alt="Dashboard immobilier Paris"> -->
           <span class="project-badge">LIVE</span>
           <span class="project-thumb-label">Dashboard Streamlit · Paris 2023</span>
         </div>
@@ -516,12 +495,14 @@
           </div>
           <div class="project-links">
             <a href="https://analyse-immobilier-paris-2023-q8bg29uahcojkerqbstyxu.streamlit.app/" target="_blank" class="btn-dashboard">Dashboard →</a>
+            <a href="projet-immobilier.html" class="btn-github">Étude de cas</a>
             <a href="https://github.com/thiziriinfo/Analyse-Immobilier-Paris-2023" target="_blank" class="btn-github">GitHub</a>
           </div>
         </div>
       </div>
       <div class="project-card">
         <div class="project-thumb">
+          <!-- Ajoute une capture : <img src="thumb-fraude.png" alt="Dashboard détection de fraude"> -->
           <span class="project-badge">LIVE</span>
           <span class="project-thumb-label">Dashboard Streamlit · IBM TabFormer</span>
         </div>
@@ -538,12 +519,14 @@
           </div>
           <div class="project-links">
             <a href="https://fraud-risk-scoring-system.streamlit.app/" target="_blank" class="btn-dashboard">Dashboard →</a>
+            <a href="projet-fraude.html" class="btn-github">Étude de cas</a>
             <a href="https://github.com/Thiziriinfo/Fraud-Risk-Scoring-System" target="_blank" class="btn-github">GitHub</a>
           </div>
         </div>
       </div>
       <div class="project-card">
         <div class="project-thumb">
+          <!-- Ajoute une capture : <img src="thumb-sante.png" alt="Dashboard santé mentale au travail"> -->
           <span class="project-badge">LIVE</span>
           <span class="project-thumb-label">Dashboard Streamlit · OCDE · OMS · INRS</span>
         </div>
@@ -560,9 +543,15 @@
           </div>
           <div class="project-links">
             <a href="https://mental-health-work-dashboard.streamlit.app" target="_blank" class="btn-dashboard">Dashboard →</a>
+            <a href="projet-sante-mentale.html" class="btn-github">Étude de cas</a>
             <a href="https://github.com/Thiziriinfo/Mental-Health-Dashboard" target="_blank" class="btn-github">GitHub</a>
           </div>
         </div>
+      </div>
+      <div class="project-card-placeholder">
+        <div class="plus">+</div>
+        <div class="ph-title">Assistant NL-to-SQL · GenAI</div>
+        <p>Question en langage naturel → requête SQL générée par LLM → résultat visualisé.<br>En construction · été 2026</p>
       </div>
     </div>
   </section>
@@ -572,7 +561,14 @@
   <section id="contact">
     <div class="section-label contact-label"><span>Me contacter</span></div>
     <h2>Travaillons ensemble</h2>
-    <p>Ouverte aux opportunités Data Analyst · CDI · Île-de-France & toute la France.</p>
+    <p>Ouverte aux opportunités Data Analyst · CDI ou mission freelance · Île-de-France & toute la France.</p>
     <div class="contact-links">
       <a href="mailto:thiziri.abchiche@gmail.com" class="btn-email">thiziri.abchiche@gmail.com</a>
-      <a href="https://linkedin.com/in/thiziri-abchiche" target="_blank" class="btn-social">Li
+      <a href="https://linkedin.com/in/thiziri-abchiche" target="_blank" class="btn-social">LinkedIn</a>
+      <a href="https://github.com/Thiziriinfo" target="_blank" class="btn-social">GitHub</a>
+    </div>
+  </section>
+
+  <footer>© 2026 Thiziri Abchiche — Data Analyst · Île-de-France</footer>
+</body>
+</html>
