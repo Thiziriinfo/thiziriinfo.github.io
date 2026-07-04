@@ -1,1 +1,154 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Santé Mentale au Travail — Analyse Mondiale — Thiziri Abchiche</title>
+  <meta name="description" content="Dashboard mondial burnout et bien-être (9 pays, 2019-2024) — simulateur ROI prévention, score de risque composite. Étude de cas par Thiziri Abchiche, Data Analyst.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://thiziriinfo.github.io/projet-sante-mentale.html">
+  <meta property="og:title" content="Santé Mentale au Travail — Analyse Mondiale — Étude de cas">
+  <meta property="og:description" content="Dashboard mondial burnout et bien-être (9 pays, 2019-2024) — simulateur ROI prévention, score de risque composite. Étude de cas par Thiziri Abchiche, Data Analyst.">
+  <meta property="og:image" content="https://thiziriinfo.github.io/photo.jpeg">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --accent: #6C63FF;
+      --grad: linear-gradient(135deg, #3D4FE0 0%, #6C63FF 50%, #9B7FE8 100%);
+      --bg: #07081a;
+      --bg2: #05060f;
+    }
+    body { font-family: 'Inter', sans-serif; background: var(--bg); color: #fff; }
+    nav {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 16px 64px; background: rgba(7,8,26,0.96);
+      position: fixed; width: 100%; top: 0; z-index: 100;
+      border-bottom: 1px solid rgba(108,99,255,0.12); backdrop-filter: blur(10px);
+    }
+    .nav-logo { font-size: 15px; font-weight: 700; color: #fff; text-decoration: none; }
+    .nav-logo span { background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .nav-back {
+      text-decoration: none; color: rgba(255,255,255,0.4); font-size: 11px;
+      font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; transition: color 0.2s;
+    }
+    .nav-back:hover { color: #fff; }
+    main { max-width: 820px; margin: 0 auto; padding: 140px 32px 80px; }
+    .cs-kicker {
+      font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase;
+      background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      font-weight: 600; margin-bottom: 14px;
+    }
+    h1 { font-family: 'Barlow', sans-serif; font-weight: 800; font-size: 40px; line-height: 1.1; margin-bottom: 18px; }
+    .cs-intro { font-size: 14px; color: rgba(255,255,255,0.55); line-height: 1.9; margin-bottom: 24px; }
+    .cs-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
+    .cs-tag {
+      font-size: 11px; font-weight: 600; padding: 5px 14px; border-radius: 4px;
+      background: rgba(108,99,255,0.1); color: #a89fff; border: 1px solid rgba(108,99,255,0.15);
+    }
+    .cs-actions { display: flex; gap: 12px; margin-bottom: 56px; flex-wrap: wrap; }
+    .btn-dashboard {
+      padding: 10px 22px; background: var(--grad); color: #fff; border-radius: 4px;
+      font-size: 12px; font-weight: 600; text-decoration: none;
+    }
+    .btn-github {
+      padding: 10px 18px; border: 1px solid rgba(255,255,255,0.12); color: rgba(255,255,255,0.5);
+      border-radius: 4px; font-size: 12px; text-decoration: none; transition: border-color 0.2s, color 0.2s;
+    }
+    .btn-github:hover { border-color: rgba(108,99,255,0.4); color: #9B7FE8; }
+    .cs-screenshot {
+      width: 100%; border-radius: 10px; border: 1px solid rgba(108,99,255,0.2);
+      margin-bottom: 56px; display: block;
+    }
+    .section-label { display: flex; align-items: center; gap: 10px; margin: 48px 0 18px; }
+    .section-label::before {
+      content: ''; display: block; width: 3px; height: 15px;
+      background: var(--grad); border-radius: 2px; flex-shrink: 0;
+    }
+    .section-label span {
+      font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase;
+      color: rgba(255,255,255,0.3); font-weight: 600;
+    }
+    p, li { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.9; margin-bottom: 14px; }
+    ul { padding-left: 20px; margin-bottom: 14px; }
+    li { margin-bottom: 6px; }
+    strong { color: #9B7FE8; font-weight: 600; }
+    .cs-stats {
+      display: flex; gap: 32px; align-items: center; flex-wrap: wrap;
+      margin: 28px 0; padding: 24px; border-radius: 10px;
+      background: rgba(108,99,255,0.06); border: 1px solid rgba(108,99,255,0.12);
+    }
+    .cs-stat .num {
+      font-size: 26px; font-weight: 300;
+      background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .cs-stat .label {
+      font-size: 10px; color: rgba(255,255,255,0.35);
+      text-transform: uppercase; letter-spacing: 0.05em; margin-top: 3px;
+    }
+    .cs-quote {
+      border-left: 3px solid; border-image: var(--grad) 1;
+      padding: 4px 0 4px 20px; margin: 28px 0;
+      font-size: 14px; color: rgba(255,255,255,0.65); font-style: italic; line-height: 1.8;
+    }
+    .cs-cta {
+      margin-top: 64px; padding: 36px; border-radius: 12px; text-align: center;
+      background: rgba(108,99,255,0.06); border: 1px solid rgba(108,99,255,0.15);
+    }
+    .cs-cta h3 { font-family: 'Barlow', sans-serif; font-size: 22px; margin-bottom: 8px; }
+    .cs-cta p { margin-bottom: 20px; }
+    footer {
+      padding: 24px 64px; border-top: 1px solid rgba(108,99,255,0.08);
+      text-align: center; font-size: 11px; color: rgba(255,255,255,0.18);
+    }
+    @media (max-width: 640px) {
+      nav { padding: 14px 24px; }
+      h1 { font-size: 30px; }
+      main { padding: 120px 20px 60px; }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a class="nav-logo" href="index.html">TA<span>.</span></a>
+    <a class="nav-back" href="index.html#projects">← Retour aux projets</a>
+  </nav>
+  <main>
+    <div class="cs-kicker">Étude de cas · RH · Impact économique</div>
+    <h1>Santé Mentale au Travail — Analyse Mondiale</h1>
+    <p class="cs-intro">Transformer des données publiques (OCDE, OMS, INRS) en outil de pilotage pour DRH : quantifier le coût de l'inaction et simuler le retour sur investissement de la prévention.</p>
+    <div class="cs-tags"><span class="cs-tag">Python</span><span class="cs-tag">Streamlit</span><span class="cs-tag">Plotly</span><span class="cs-tag">SQLite</span><span class="cs-tag">SQL avancé</span></div>
+    <div class="cs-actions">
+      <a href="https://mental-health-work-dashboard.streamlit.app" target="_blank" class="btn-dashboard">Voir le dashboard live →</a>
+      <a href="https://github.com/Thiziriinfo/Mental-Health-Dashboard" target="_blank" class="btn-github">Code sur GitHub</a>
+    </div>
+    <!-- Capture d'écran principale : décommente et ajoute l'image au repo
+    <img class="cs-screenshot" src="thumb-sante.png" alt="Capture du dashboard Santé Mentale au Travail">
+    -->
 
+<div class="section-label"><span>Le problème</span></div>
+<p>La santé mentale au travail est devenue une priorité des DRH — Grande Cause nationale 2025 en France, coût estimé à plus de <strong>130 milliards d'euros par an</strong> pour l'économie française. Pourtant, beaucoup d'entreprises naviguent à l'aveugle, sans indicateurs ni outil de pilotage. Ce dashboard transforme des données publiques en réponses aux questions que se posent réellement les décideurs.</p>
+
+<div class="section-label"><span>Les données</span></div>
+<p>Des données synthétiques mais réalistes, construites à partir des statistiques publiées par l'<strong>OCDE</strong> (Work-Life Balance, absentéisme), l'<strong>OMS</strong> (burnout, anxiété, dépression par pays), la <strong>DREES et l'INRS</strong> (données sectorielles France) et les benchmarks <strong>Mercer/Deloitte</strong> (coûts et ROI prévention). 4 tables, 9 pays, 8 secteurs, 6 ans de données.</p>
+
+<div class="section-label"><span>La démarche</span></div>
+<p>Six pages orientées décision : comparaison mondiale sur 6 ans, zoom France par secteur avec un <strong>score de risque composite</strong> (burnout + anxiété + turnover, normalisation min-max), quantification de l'impact économique (productivité perdue, absentéisme, coût par habitant), analyse démographique par âge et genre, un <strong>explorateur SQL en direct</strong> (15 requêtes : window functions, CTEs imbriquées, pivots), et la page cœur du projet : le <strong>simulateur de ROI</strong> d'un programme de prévention, paramétrable en temps réel.</p>
+
+<div class="cs-stats"><div class="cs-stat"><div class="num">9</div><div class="label">pays comparés</div></div><div class="cs-stat"><div class="num">8</div><div class="label">secteurs France</div></div><div class="cs-stat"><div class="num">130 Md€</div><div class="label">coût annuel de l'inaction</div></div><div class="cs-stat"><div class="num">15</div><div class="label">requêtes SQL analytiques</div></div></div>
+
+<div class="section-label"><span>Les résultats clés</span></div>
+<p>L'écart femmes/hommes sur les indicateurs de santé mentale au travail est <strong>systématique sur toutes les tranches d'âge</strong>. Le score composite fait ressortir les secteurs français en crise et ceux qui résistent. Et le simulateur montre qu'un programme de prévention bien ciblé est rentable dans la quasi-totalité des scénarios réalistes.</p>
+
+<div class="section-label"><span>Ce que j'ai appris</span></div>
+<div class="cs-quote">Pas juste « comment faire un joli graphique », mais « à quelle question ce graphique répond-il ? ». Le simulateur ROI en est l'illustration : le vrai besoin d'un DRH n'est pas de lire des chiffres statiques, c'est de jouer avec ses propres paramètres et de voir l'impact en temps réel.</div>
+
+    <div class="cs-cta">
+      <h3>Un projet similaire en tête ?</h3>
+      <p>Je suis ouverte aux opportunités — CDI ou mission freelance, démarrage immédiat.</p>
+      <a href="mailto:thiziri.abchiche@gmail.com" class="btn-dashboard">Me contacter</a>
+    </div>
+  </main>
+  <footer>© 2026 Thiziri Abchiche — Data Analyst · Île-de-France</footer>
+</body>
+</html>
